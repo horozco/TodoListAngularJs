@@ -1,0 +1,23 @@
+<div ng-controller="FirstCtrl">
+  <ul class="todo-controls">
+    <div class="todo-list">
+      <form ng-submit="checkAllTask()">
+        <input type="checkbox" id="allCompleted">
+        <label for="allCompleted" class="toggle"></label>
+      </form>
+      <form ng-submit="addTask()">
+        <input class="task-name"type="text" placeholder="Add Task" ng-model="newTask.name">
+      </form>
+    </div>
+  </ul>
+  <ul class="todo-list">
+    <li ng-class="{completed: task.completed}" ng-repeat="task in tasks">
+      <form ng-submit="complete()">
+        <input id="UNIQUELABEL{{$index+1}}" type="checkbox" ng-model="task.completed" ng-click="switchStatus()">
+        <label for="UNIQUELABEL{{$index+1}}" class="toggle"></label>
+        {{task.name}}
+        <a href="javascript:void(0);" class="remove-task icon-delete" ng-click="deleteTask()"></a>
+      </form>
+    </li>
+  </ul>
+</div>
